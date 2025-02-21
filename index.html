@@ -124,11 +124,11 @@
         const menuOptions1 = {
             "MDA-A": [
                 { value: "MDA_A_DPA.png", text: "17:00 a 20:00 hrs.", label: "Derecho Procesal" }, //LISTA LA IMAGEN 
-                { value: "seguridad_social.jpg", text: "17:00 a 20:00 hrs.", label: "Seguridad Social" },//PENDIENTE LA IMAGEN
+                { value: "seguridad_social.jpg", text: "17:00 a 20:00 hrs.", label: "Seguridad Social" }, //PENDIENTE LA IMAGEN
                 { value: "MDA_A_CE.png", text: "17:00 a 20:00 hrs.", label: "Comercio Exterior" } //LISTA LA IMAGEN 
             ],
             "MDA-B": [
-                { value: "MDA_B_RPE.png", text: "17:00 a 20:00 hrs.", label: "Responsabilidad Patrimonial" },//LISTA LA IMAGEN 
+                { value: "MDA_B_RPE.png", text: "17:00 a 20:00 hrs.", label: "Responsabilidad Patrimonial" }, //LISTA LA IMAGEN 
                 { value: "MDA_B_SSPJA.png", text: "17:00 a 20:00 hrs.", label: "Seguridad Social" } //LISTA LA IMAGEN 
             ],
             "MJA-B": [
@@ -151,7 +151,7 @@
             ],
             "ERA-B": [
                 { value: "ERA_B_FRFT.png", text: "07:00 a 10:00 hrs.", label: "Fiscalización de Recursos" }, //LISTA LA IMAGEN
-                { value: "ERA_B_PRA.png", text: "07:00 a 10:00 hrs.", label: "Procedimiento de Responsabilidad Administrativa" }//LISTA LA IMAGEN
+                { value: "ERA_B_PRA.png", text: "07:00 a 10:00 hrs.", label: "Procedimiento de Responsabilidad Administrativa" } //LISTA LA IMAGEN
             ]
         };
         // Actualizar la fecha (solo para la ventana emergente)
@@ -166,10 +166,10 @@
             return `${month} ${day}`; // Formato: "Mes Día"
         }
         // Función para abrir la ventana emergente
-        function openPopup(selectedImage, selectedText) {
+        function openPopup(selectedImage, selectedText, windowTitle) {
             if (selectedImage) {
-                // Abrir una nueva ventana con tamaño específico (975x555) y sin redimensionar
-                const newWindow = window.open('', '_blank', 'width=975,height=555,resizable=yes');
+                // Abrir una nueva ventana sin barra de dirección ni otros elementos
+                const newWindow = window.open('', '_blank', 'width=975,height=555,resizable=yes,location=no,menubar=no,toolbar=no,status=no');
                 // Construir el contenido de la nueva ventana
                 newWindow.document.write(`
                     <!DOCTYPE html>
@@ -177,7 +177,7 @@
                     <head>
                         <meta charset="UTF-8">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>Ventana Emergente</title>
+                        <title>${windowTitle}</title> <!-- Título personalizado -->
                         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
                         <style>
                             body, html {
@@ -243,12 +243,14 @@
         document.getElementById('secondary-select-1').addEventListener('change', function() {
             const selectedImage = this.value; // Obtiene el valor seleccionado (imagen)
             const selectedText = this.options[this.selectedIndex].getAttribute('data-text'); // Obtiene el texto asociado
-            openPopup(selectedImage, selectedText);
+            const selectedLabel = this.options[this.selectedIndex].textContent; // Obtiene el nombre de la selección
+            openPopup(selectedImage, selectedText, selectedLabel); // Pasar el nombre como título
         });
         document.getElementById('secondary-select-2').addEventListener('change', function() {
             const selectedImage = this.value; // Obtiene el valor seleccionado (imagen)
             const selectedText = this.options[this.selectedIndex].getAttribute('data-text'); // Obtiene el texto asociado
-            openPopup(selectedImage, selectedText);
+            const selectedLabel = this.options[this.selectedIndex].textContent; // Obtiene el nombre de la selección
+            openPopup(selectedImage, selectedText, selectedLabel); // Pasar el nombre como título
         });
         // Manejar cambios en el primer menú principal
         document.getElementById('main-select-1').addEventListener('change', function() {
