@@ -29,7 +29,7 @@
             color: Black;
             border-radius: 10px;
             font-size: 2.0vw; /* Tamaño de fuente responsive */
-            display: none; /* Ocultar cuadros de texto en la página principal */
+            display: none; 
         }
         .date-box {
             bottom: 10vh; /* Ajusta la posición vertical */
@@ -168,9 +168,7 @@
         // Función para abrir la ventana emergente
         function openPopup(selectedImage, selectedText, windowTitle) {
             if (selectedImage) {
-                // Abrir una nueva ventana sin barra de dirección ni otros elementos
                 const newWindow = window.open('', '_blank', 'width=975,height=555,resizable=yes,location=no,menubar=no,toolbar=no,status=no');
-                // Construir el contenido de la nueva ventana
                 newWindow.document.write(`
                     <!DOCTYPE html>
                     <html lang="es">
