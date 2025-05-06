@@ -18,7 +18,6 @@
             position: relative;
             width: 100%;
             height: 100%;
-            background-image: url('sinfondo.jpg'); /* Imagen de fondo */
             background-size: cover;
             background-position: center;
         }
@@ -28,16 +27,16 @@
             background: rgba(255, 255, 255, .5);
             color: Black;
             border-radius: 10px;
-            font-size: 2.0vw; /* Tamaño de fuente responsive */
+            font-size: 2.0vw;
             display: none; 
         }
         .date-box {
-            bottom: 10vh; /* Ajusta la posición vertical */
-            left: 5vw; /* Ajusta la posición horizontal */
+            bottom: 10vh;
+            left: 5vw;
         }
         .additional-box {
-            bottom: 20vh; /* Posición debajo de la fecha */
-            left: 2vw; /* Ajusta la posición horizontal */
+            bottom: 20vh; 
+            left: 2vw;
         }
         .waiting-box {
             bottom: 10vh;
@@ -52,7 +51,6 @@
                 opacity: 0;
             }
         }
-        /* Estilo para los cuadros desplegables */
         .menu {
             position: absolute;
             z-index: 2;
@@ -60,7 +58,7 @@
             font-size: 1.0vw;
             border-radius: 10px;
             background: rgba(255, 255, 255, 0.8);
-            width: 20vw; /* Ancho relativo */
+            width: 20vw;
         }
         .menu-title {
             position: absolute;
@@ -90,7 +88,6 @@
 </head>
 <body>
 <div class="menu-title" style="top: 5vh; left: 32vw;">Centro de Estudios Superiores en Materia de Derecho Fiscal y Administrativo</div>
-    <!-- Primer conjunto de menús -->
     <div class="menu-title" style="top: 15vh; left: 29vw;">Maestrías</div>
     <select id="main-select-1" class="menu">
         <option value="">Selecciona una opción</option>
@@ -101,7 +98,6 @@
     <select id="secondary-select-1" class="menu" disabled>
         <option value="">Selecciona una opción</option>
     </select>
-    <!-- Segundo conjunto de menús -->
     <div class="menu-title" style="top: 15vh; left: 64vw;">Especialidades</div>
     <select id="main-select-2" class="menu">
         <option value="">Selecciona una opción</option>
@@ -114,66 +110,67 @@
         <option value="">Selecciona una opción</option>
     </select>
     <div class="container">
-        <!-- Los cuadros de texto están ocultos en la página principal -->
         <div class="text-box date-box" id="date-box"></div>
         <div class="text-box additional-box" id="additional-box">17:00 a 20:00 hrs.</div> 
         <div class="text-box waiting-box">Comenzamos en breve...</div>
     </div>
     <script>
-        // Datos para los menús
+        //Datos para los menús, aqui asignas la imagen, el horario y el título de la ventana
+        //Recomiendo copiar una linea de codigo, pegarla y hacer los cambios necesarios, solo procura terminar con una , 
         const menuOptions1 = {
-            "MDA-A": [
-                { value: "MDA_A_DPA.png", text: "17:00 a 20:00 hrs.", label: "Derecho Procesal" }, //LISTA LA IMAGEN 
+            "MDA-A": 
+            [
+                { value: "MDA_A_DPA.png", text: "17:00 a 20:00 hrs.", label: "Derecho Procesal" }, 
                 { value: "MDA A PI.jpg", text: "17:00 a 20:00 hrs.", label: "Propiedad Intelectual" }, 
-                { value: "MDA_A_CE.png", text: "17:00 a 20:00 hrs.", label: "Comercio Exterior" } //LISTA LA IMAGEN 
+                { value: "MDA_A_CE.png", text: "17:00 a 20:00 hrs.", label: "Comercio Exterior" }
             ],
-            "MDA-B": [
-              //  { value: "MDA_B_RPE.png", text: "17:00 a 20:00 hrs.", label: "Responsabilidad Patrimonial" }, //LISTA LA IMAGEN 
-                { value: "MDA_B_SSPJA.png", text: "17:00 a 20:00 hrs.", label: "Seguridad Social" }, //LISTA LA IMAGEN
+            "MDA-B": 
+            [
+                { value: "MDA_B_SSPJA.png", text: "17:00 a 20:00 hrs.", label: "Seguridad Social" }, 
                 { value: "MDA B PI.jpg", text: "17:00 a 20:00 hrs.", label: "Propiedad Intelectual" }, 
-                { value: "MDA B CE.jpg", text: "17:00 a 20:00 hrs.", label: "Comercio Exterior" } //En edicion 
+                { value: "MDA B CE.jpg", text: "17:00 a 20:00 hrs.", label: "Comercio Exterior" } 
             ],
-            "MJA-B": [
-               // { value: "MJA_B_DPC.png", text: "07:00 a 10:00 hrs.", label: "Derecho Procesal" }, //LISTA LA IMAGEN 
-                { value: "MJA B LJ.jpg", text: "07:00 a 10:00 hrs.", label: "Lógica Jurídica" }, //LISTA LA IMAGEN
-                { value: "MJA B SDF.jpg", text: "07:00 a 10:00 hrs.", label: "Seminario de Derecho Fiscal" }, //LISTA LA IMAGEN
-                { value: "MJA_B_IJ.png", text: "07:00 a 10:00 hrs.", label: "Informática Jurídica" } //LISTA LA IMAGEN
+            "MJA-B": 
+            [
+                { value: "MJA B LJ.jpg", text: "07:00 a 10:00 hrs.", label: "Lógica Jurídica" }, 
+                { value: "MJA B SDF.jpg", text: "07:00 a 10:00 hrs.", label: "Seminario de Derecho Fiscal" }, 
+                { value: "MJA_B_IJ.png", text: "07:00 a 10:00 hrs.", label: "Informática Jurídica" } 
             ]
         };
         const menuOptions2 = {
-            "EDH-A": [
-                { value: "EDH_A_TRS.png", text: "17:00 a 20:00 hrs.", label: "Taller de Redacción" }, //LISTA LA IMAGEN
-                { value: "EDH_A_SCPDH.png", text: "17:00 a 20:00 hrs.", label: "Seminario Casos Prácticos" } //LISTA LA IMAGEN
+            "EDH-A":
+             [
+                { value: "EDH_A_TRS.png", text: "17:00 a 20:00 hrs.", label: "Taller de Redacción" }, 
+                { value: "EDH_A_SCPDH.png", text: "17:00 a 20:00 hrs.", label: "Seminario Casos Prácticos" } 
             ],
-            "EDH-B": [
-               // { value: "EDH_B_AJ.png", text: "17:00 a 20:00 hrs.", label: "Argumentación Jurídica" }, //LISTA LA IMAGEN
-                { value: "EDH B SCPDH.jpg", text: "17:00 a 20:00 hrs.", label: "Seminario de Casos Practicos" }, //LISTA LA IMAGEN
-                { value: "EDH B TRS.jpg", text: "17:00 a 20:00 hrs.", label: "Taller de Redacción" }, //LISTA LA IMAGEN
-                { value: "EDH_B_SNJ.png", text: "17:00 a 20:00 hrs.", label: "Sistema no Jurisdiccional" } //LISTA LA IMAGEN
+            "EDH-B": 
+            [
+                { value: "EDH B SCPDH.jpg", text: "17:00 a 20:00 hrs.", label: "Seminario de Casos Practicos" },
+                { value: "EDH B TRS.jpg", text: "17:00 a 20:00 hrs.", label: "Taller de Redacción" }, 
+                { value: "EDH_B_SNJ.png", text: "17:00 a 20:00 hrs.", label: "Sistema no Jurisdiccional" } 
             ],
-            "ERA-A": [
-                { value: "ERA_A_PRA.png", text: "17:00 a 20:00 hrs.", label: "Procedimiento de Responsabilidad" }, //LISTA LA IMAGEN
-                { value: "ERA_A_RMD.png", text: "17:00 a 20:00 hrs.", label: "Recursos y Medios de Defensa" } //LISTA LA IMAGEN
+            "ERA-A": 
+            [
+                { value: "ERA_A_PRA.png", text: "17:00 a 20:00 hrs.", label: "Procedimiento de Responsabilidad" }, 
+                { value: "ERA_A_RMD.png", text: "17:00 a 20:00 hrs.", label: "Recursos y Medios de Defensa" } 
             ],
-            "ERA-B": [
-               // { value: "ERA_B_FRFT.png", text: "07:00 a 10:00 hrs.", label: "Fiscalización de Recursos" }, //LISTA LA IMAGEN
-                { value: "ERA B RPE.jpg", text: "07:00 a 10:00 hrs.", label: "Responsabilidad Patrimonial" }, //LISTA LA IMAGEN
-                { value: "ERA B RMD.jpg", text: "07:00 a 10:00 hrs.", label: "Recursos y Medios de Defensa en Ley General" }, //LISTA LA IMAGEN
-                { value: "ERA_B_PRA.png", text: "07:00 a 10:00 hrs.", label: "Procedimiento de Responsabilidad Administrativa" } //LISTA LA IMAGEN
+            "ERA-B": 
+            [
+                { value: "ERA B RPE.jpg", text: "07:00 a 10:00 hrs.", label: "Responsabilidad Patrimonial" },
+                { value: "ERA B RMD.jpg", text: "07:00 a 10:00 hrs.", label: "Recursos y Medios de Defensa en Ley General" },
+                { value: "ERA_B_PRA.png", text: "07:00 a 10:00 hrs.", label: "Procedimiento de Responsabilidad Administrativa" }
             ]
         };
-        // Actualizar la fecha (solo para la ventana emergente)
         function updateDate() {
             const now = new Date();
             const monthNames = [
                 "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
                 "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
             ];
-            const month = monthNames[now.getMonth()]; // Obtiene el nombre del mes
-            const day = now.getDate(); // Obtiene el día del mes
-            return `${month} ${day}`; // Formato: "Mes Día"
+            const month = monthNames[now.getMonth()]; 
+            const day = now.getDate(); 
+            return `${month} ${day}`; 
         }
-        // Función para abrir la ventana emergente
         function openPopup(selectedImage, selectedText, windowTitle) {
             if (selectedImage) {
                 const newWindow = window.open('', '_blank', 'width=975,height=555,resizable=yes,location=no,menubar=no,toolbar=no,status=no');
@@ -245,25 +242,22 @@
                 newWindow.document.close();
             }
         }
-        // Manejar cambios en los menús secundarios
         document.getElementById('secondary-select-1').addEventListener('change', function() {
-            const selectedImage = this.value; // Obtiene el valor seleccionado (imagen)
-            const selectedText = this.options[this.selectedIndex].getAttribute('data-text'); // Obtiene el texto asociado
-            const selectedLabel = this.options[this.selectedIndex].textContent; // Obtiene el nombre de la selección
-            openPopup(selectedImage, selectedText, selectedLabel); // Pasar el nombre como título
+            const selectedImage = this.value; 
+            const selectedText = this.options[this.selectedIndex].getAttribute('data-text'); 
+            const selectedLabel = this.options[this.selectedIndex].textContent; 
+            openPopup(selectedImage, selectedText, selectedLabel); 
         });
         document.getElementById('secondary-select-2').addEventListener('change', function() {
-            const selectedImage = this.value; // Obtiene el valor seleccionado (imagen)
-            const selectedText = this.options[this.selectedIndex].getAttribute('data-text'); // Obtiene el texto asociado
-            const selectedLabel = this.options[this.selectedIndex].textContent; // Obtiene el nombre de la selección
-            openPopup(selectedImage, selectedText, selectedLabel); // Pasar el nombre como título
+            const selectedImage = this.value; 
+            const selectedText = this.options[this.selectedIndex].getAttribute('data-text'); 
+            const selectedLabel = this.options[this.selectedIndex].textContent; 
+            openPopup(selectedImage, selectedText, selectedLabel); 
         });
-        // Manejar cambios en el primer menú principal
         document.getElementById('main-select-1').addEventListener('change', function() {
             const selectedCategory = this.value;
             const secondarySelect1 = document.getElementById('secondary-select-1');
             if (selectedCategory) {
-                // Habilitar y actualizar el menú secundario
                 secondarySelect1.disabled = false;
                 secondarySelect1.innerHTML = '<option value="">Selecciona una opción</option>';
                 menuOptions1[selectedCategory].forEach(option => {
@@ -274,17 +268,14 @@
                     secondarySelect1.appendChild(newOption);
                 });
             } else {
-                // Deshabilitar el menú secundario si no hay selección
                 secondarySelect1.disabled = true;
                 secondarySelect1.innerHTML = '<option value="">Selecciona una opción</option>';
             }
         });
-        // Manejar cambios en el segundo menú principal
         document.getElementById('main-select-2').addEventListener('change', function() {
             const selectedCategory = this.value;
             const secondarySelect2 = document.getElementById('secondary-select-2');
             if (selectedCategory) {
-                // Habilitar y actualizar el menú secundario
                 secondarySelect2.disabled = false;
                 secondarySelect2.innerHTML = '<option value="">Selecciona una opción</option>';
                 menuOptions2[selectedCategory].forEach(option => {
@@ -295,7 +286,6 @@
                     secondarySelect2.appendChild(newOption);
                 });
             } else {
-                // Deshabilitar el menú secundario si no hay selección
                 secondarySelect2.disabled = true;
                 secondarySelect2.innerHTML = '<option value="">Selecciona una opción</option>';
             }
